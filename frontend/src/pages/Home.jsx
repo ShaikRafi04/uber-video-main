@@ -62,7 +62,7 @@ const Home = () => {
     const handlePickupChange = async (e) => {
         setPickup(e.target.value)
         try {
-            const response = await axios.get(`${import.meta.env.VITE_BASE_URL}/maps/get-suggestions`, {
+            const response = await axios.get('/maps/get-suggestions', {
                 params: { input: e.target.value },
                 headers: {
                     Authorization: `Bearer ${localStorage.getItem('token')}`
@@ -78,7 +78,7 @@ const Home = () => {
     const handleDestinationChange = async (e) => {
         setDestination(e.target.value)
         try {
-            const response = await axios.get(`${import.meta.env.VITE_BASE_URL}/maps/get-suggestions`, {
+            const response = await axios.get('/maps/get-suggestions', {
                 params: { input: e.target.value },
                 headers: {
                     Authorization: `Bearer ${localStorage.getItem('token')}`
@@ -170,7 +170,7 @@ const Home = () => {
         setVehiclePanel(true)
         setPanelOpen(false)
 
-        const response = await axios.get(`${import.meta.env.VITE_BASE_URL}/rides/get-fare`, {
+        const response = await axios.get('/rides/get-fare', {
             params: { pickup, destination },
             headers: {
                 Authorization: `Bearer ${localStorage.getItem('token')}`
@@ -184,7 +184,7 @@ const Home = () => {
     }
 
     async function createRide() {
-        const response = await axios.post(`${import.meta.env.VITE_BASE_URL}/rides/create`, {
+        const response = await axios.post('/rides/create', {
             pickup,
             destination,
             vehicleType

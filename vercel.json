@@ -1,0 +1,51 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "services": {
+    "backend": {
+      "root": "Backend",
+      "framework": "express"
+    },
+    "frontend": {
+      "root": "frontend",
+      "framework": "vite"
+    }
+  },
+  "rewrites": [
+    {
+      "source": "/users/(.*)",
+      "destination": {
+        "service": "backend"
+      }
+    },
+    {
+      "source": "/captains/(.*)",
+      "destination": {
+        "service": "backend"
+      }
+    },
+    {
+      "source": "/maps/(.*)",
+      "destination": {
+        "service": "backend"
+      }
+    },
+    {
+      "source": "/rides/(.*)",
+      "destination": {
+        "service": "backend"
+      }
+    },
+    {
+      "source": "/socket.io/(.*)",
+      "destination": {
+        "service": "backend"
+      }
+    },
+    {
+      "source": "/(.*)",
+      "destination": {
+        "service": "frontend"
+      }
+    }
+  ]
+}
