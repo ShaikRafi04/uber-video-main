@@ -60,10 +60,15 @@ const Home = () => {
 
 
     const handlePickupChange = async (e) => {
-        setPickup(e.target.value)
+        const input = e.target.value
+        setPickup(input)
+        if (input.trim().length < 3) {
+            setPickupSuggestions([])
+            return
+        }
         try {
             const response = await axios.get('/maps/get-suggestions', {
-                params: { input: e.target.value },
+                params: { input },
                 headers: {
                     Authorization: `Bearer ${localStorage.getItem('token')}`
                 }
@@ -76,10 +81,15 @@ const Home = () => {
     }
 
     const handleDestinationChange = async (e) => {
-        setDestination(e.target.value)
+        const input = e.target.value
+        setDestination(input)
+        if (input.trim().length < 3) {
+            setDestinationSuggestions([])
+            return
+        }
         try {
             const response = await axios.get('/maps/get-suggestions', {
-                params: { input: e.target.value },
+                params: { input },
                 headers: {
                     Authorization: `Bearer ${localStorage.getItem('token')}`
                 }
